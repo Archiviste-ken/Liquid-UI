@@ -1,0 +1,202 @@
+@import "tailwindcss";
+@import "./glass.css";
+@import "./neo.css";
+
+:root {
+  --liquid-page: #eaf0fb;
+  --liquid-surface: #ffffff;
+  --liquid-muted: #f1f5fd;
+  --liquid-ink: #0a1124;
+  --liquid-subtle: #52607a;
+  --liquid-accent: #0ea5e9;
+  --liquid-danger: #ef476f;
+  --liquid-ring: #0284c7;
+}
+
+.dark {
+  --liquid-page: #040816;
+  --liquid-surface: #0f172a;
+  --liquid-muted: #16233b;
+  --liquid-ink: #eef6ff;
+  --liquid-subtle: #99afcf;
+  --liquid-accent: #22d3ee;
+  --liquid-danger: #f15f81;
+  --liquid-ring: #0ea5e9;
+}
+
+@theme inline {
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-space-grotesk);
+  --color-liquid-page: var(--liquid-page);
+  --color-liquid-surface: var(--liquid-surface);
+  --color-liquid-muted: var(--liquid-muted);
+  --color-liquid-ink: var(--liquid-ink);
+  --color-liquid-subtle: var(--liquid-subtle);
+  --color-liquid-accent: var(--liquid-accent);
+  --color-liquid-danger: var(--liquid-danger);
+  --color-liquid-ring: var(--liquid-ring);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-manrope), sans-serif;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.liquid-grid {
+  background-image:
+    radial-gradient(rgba(106, 121, 145, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(106, 121, 145, 0.08) 1px, transparent 1px),
+    radial-gradient(
+      circle at 8% -5%,
+      rgba(14, 165, 233, 0.24),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 90% 6%,
+      rgba(45, 212, 191, 0.18),
+      transparent 22%
+    ),
+    linear-gradient(132deg, #eaf1ff 0%, #ecf5ff 42%, #edf9f7 100%);
+  background-size:
+    26px 26px,
+    13px 13px,
+    cover,
+    cover,
+    cover;
+  background-position:
+    0 0,
+    6px 6px,
+    center,
+    center,
+    center;
+}
+
+.dark .liquid-grid {
+  background-image:
+    radial-gradient(rgba(132, 146, 173, 0.17) 1px, transparent 1px),
+    radial-gradient(rgba(132, 146, 173, 0.11) 1px, transparent 1px),
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(34, 211, 238, 0.17),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 85% 3%,
+      rgba(16, 185, 129, 0.12),
+      transparent 20%
+    ),
+    linear-gradient(142deg, #040816 0%, #081124 44%, #0a1730 100%);
+}
+
+.liquid-panel {
+  border: 1px solid color-mix(in oklab, var(--liquid-ink) 14%, transparent);
+  border-radius: 1.25rem;
+}
+
+.liquid-hero-glow {
+  background-image:
+    radial-gradient(
+      circle at 20% 12%,
+      rgba(14, 165, 233, 0.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 78% 8%,
+      rgba(16, 185, 129, 0.18),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(56, 189, 248, 0.14),
+      transparent 38%
+    );
+}
+
+.liquid-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.2) 0%,
+    rgba(56, 189, 248, 0.32) 42%,
+    rgba(148, 163, 184, 0.2) 100%
+  );
+  background-size: 220% 100%;
+  animation: liquid-shimmer 1.2s linear infinite;
+}
+
+.dark .liquid-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(51, 65, 85, 0.38) 0%,
+    rgba(34, 211, 238, 0.36) 44%,
+    rgba(51, 65, 85, 0.38) 100%
+  );
+  background-size: 220% 100%;
+}
+
+.liquid-loader-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--liquid-accent) 74%, white);
+  animation: liquid-dot-bounce 0.8s ease-in-out infinite;
+}
+
+@keyframes liquid-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -20% 0;
+  }
+}
+
+@keyframes liquid-dot-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.58;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .liquid-grid {
+    background-size:
+      20px 20px,
+      10px 10px,
+      cover,
+      cover,
+      cover;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
